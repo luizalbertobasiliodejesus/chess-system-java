@@ -88,12 +88,13 @@ public class ChessMatch {
 	}
 
 	private void undoMove(Position source, Position target, Piece capturedPiece) {
-		// TODO Auto-generated method stub
-
+		ChessPiece p = (ChessPiece)board.removePiece(source);
+		p.decreaseMoveCount();
 	}
 
 	private Piece makeMove(Position source, Position target) {
-		Piece p = board.removePiece(source);
+		ChessPiece p = (ChessPiece)board.removePiece(source);
+		p.increaseMoveCount();
 		ChessPiece capturedPiece = (ChessPiece) board.removePiece(target);
 		board.placePiece(p, target);
 
